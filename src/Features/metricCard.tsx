@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useQuery } from 'urql';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -23,7 +24,7 @@ query($input: String!) {
     }
   }
 `
-export const MetricCard = ({ metric, changes, changes: { columns } }) => {
+export const MetricCard = ({ metric, changes, changes: { columns }, onClose }) => {
 
     const [cd, setCD] = useState([[0, 0]]);
     const classes = useStyles();
@@ -46,6 +47,7 @@ export const MetricCard = ({ metric, changes, changes: { columns } }) => {
         <Card className={classes.root} variant="outlined">
             <CardContent>
                 <Typography variant="h5" component="h2">{metric} </Typography>
+                {/* <Button onClick={(e) => { onClose() }}>X</Button> */}
             </CardContent>
             <CardActions>
                 <Typography variant="h5" component="h2">{cd[0] && cd[0][1]}</Typography>

@@ -20,6 +20,13 @@ const slice = createSlice({
       } else state.selectedMetrics = [...state.selectedMetrics];
       console.log(state.selectedMetrics);
     },
+    ExcludeItem: (state, action: PayloadAction<any>) => {
+      const { selectedItem } = action.payload;
+      if (state.selectedMetrics.includes(selectedItem)) {
+        state.selectedMetrics = state.selectedMetrics.filter(metric => metric !== selectedItem);
+      }
+    },
+
     metricsListDataRecevied: (state, action: PayloadAction<any>) => {
       const { getMetrics } = action.payload;
       state.getMetrics = getMetrics;

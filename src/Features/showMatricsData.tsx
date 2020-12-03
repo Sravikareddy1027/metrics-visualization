@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from 'urql';
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 import { MetricCard } from './metricCard';
+import { actions } from './dashboard/reducer';
 
 const query = ` 
 query($input: [MeasurementQuery]!) {
@@ -25,6 +26,7 @@ export const ShowMetricsData = (props) => {
     interval = setInterval(() => { setMillis(new Date()) }, 1350);
     var [gData, setGData] = useState({ columns: [] });
 
+    const dispatch = useDispatch();
     let { selectedMetrics } = useSelector((state: any) => state.dashboard);
 
     let input = [];
@@ -65,7 +67,9 @@ export const ShowMetricsData = (props) => {
     return (
         <div>
             {selectedMetrics?.map((metric, indx) => (
-                <MetricCard metric={metric} key={indx + 'metrics-card'} changes={gData} />
+                <MetricCard metric={metric} key={indx + 'metrics-card'} changes={gData} onClose={() => {
+                    dispatch(actions.ExcludeItem({ selectedItem: metric }));
+                }} />
             ))}
             {gData.columns.length ? <div id="chart">
                 <C3Chart data={gData} />

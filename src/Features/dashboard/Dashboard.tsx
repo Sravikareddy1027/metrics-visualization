@@ -13,7 +13,7 @@ export const DashboardPage = () => {
       <div style={{ position: 'absolute', top: 10, right: 20 }}>
         <MetricsSelector />
       </div>
-      <div style={{ position: 'absolute', top: 10, left: 20, maxWidth: '75vw' }}>
+      <div style={{ position: 'absolute', top: 10, left: 20, width: '75vw' }}>
         <ShowMetricsData />
       </div>
     </Provider>
