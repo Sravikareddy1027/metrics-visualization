@@ -32,7 +32,9 @@ const App = () => (
       <Wrapper>
         <Header />
         {/* <NowWhat /> */}
-        <DashboardPage />
+        <div style={{ position: 'relative' }}>
+          <DashboardPage />
+        </div>
         <ToastContainer />
       </Wrapper>
     </Provider>

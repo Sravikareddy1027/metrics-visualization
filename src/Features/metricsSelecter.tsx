@@ -34,11 +34,12 @@ export const MetricsSelector = (props) => {
         }
         if (!data) return;
         let { getMetrics } = data;
-        dispatch(actions.dashboardDataRecevied({ getMetrics }));
+        dispatch(actions.metricsListDataRecevied({ getMetrics }));
     }, [dispatch, fetching, data, error]);
-
+    useEffect(() => {
+        dispatch(actions.UpdateSelectMetrics({ selectedItem: selectedMet }));
+    }, [selectedMet]);
     if (fetching) return <LinearProgress />;
-
     return (
         <FormControl className={classes.formControl}>
             <NativeSelect

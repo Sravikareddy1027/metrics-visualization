@@ -9,7 +9,9 @@ const client = createClient({
 export const DashboardPage = () => {
   return (
     <Provider value={client}>
-      <MetricsSelector />
+      <div style={{ position: 'absolute', top: 0, right: 20 }}>
+        <MetricsSelector />
+      </div>
     </Provider>
   );
 };
