@@ -23,7 +23,7 @@ var interval = null;
 export const ShowMetricsData = (props) => {
     clearInterval(interval);
     var [millis, setMillis] = useState(new Date());
-    interval = setInterval(() => { setMillis(new Date()) }, 1350);
+    interval = setInterval(() => { setMillis(new Date()) }, 500);
     var [gData, setGData] = useState({ columns: [] });
 
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export const ShowMetricsData = (props) => {
 
 
     useEffect(() => {
-        // console.log(fetching, data, error);
+        console.log(fetching, data, error);
         if (data) {
             // console.log(data?.getMultipleMeasurements,
             //     data?.getMultipleMeasurements[0]?.measurements[0]?.value);
@@ -55,14 +55,14 @@ export const ShowMetricsData = (props) => {
 
     }, [millis]);
 
-    let axis = {
-        x: {
-            type: 'timeseries',
-            tick: {
-                format: '%Y-%m-%d %H:%M:%S'
-            }
-        }
-    }
+    // let axis = {
+    //     x: {
+    //         type: 'timeseries',
+    //         tick: {
+    //             format: '%Y-%m-%d %H:%M:%S'
+    //         }
+    //     }
+    // }
 
     return (
         <div>

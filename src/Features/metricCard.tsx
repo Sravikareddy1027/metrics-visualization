@@ -5,7 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { useQuery } from 'urql';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -35,13 +35,11 @@ export const MetricCard = ({ metric, changes, changes: { columns }, onClose }) =
         },
     });
     const { fetching, data, error } = result;
-
-
     useEffect(() => {
         console.log(fetching, data, error, columns);
-        let filteredDt = columns?.filter(dt => dt[0] == metric);
+        let filteredDt = columns?.filter(dt => dt[0] === metric);
         setCD(filteredDt);
-    }, [changes]);
+    },[changes]);
 
     return (
         <Card className={classes.root} variant="outlined">

@@ -38,7 +38,7 @@ export const MetricsSelector = (props) => {
     }, [dispatch, fetching, data, error]);
     useEffect(() => {
         dispatch(actions.UpdateSelectMetrics({ selectedItem: selectedMet }));
-    }, [selectedMet]);
+    }, [dispatch,selectedMet]);
     if (fetching) return <LinearProgress />;
     return (
         <FormControl className={classes.formControl}>
