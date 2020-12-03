@@ -49,7 +49,7 @@ export const MetricsSelector = (props) => {
                 className={classes.selectEmpty}
                 inputProps={{ 'aria-label': 'Metrics' }}
             >
-                <option value="-1" disabled>None</option>
+                <option value="-1" disabled>Select Metrics</option>
                 {getMetrics?.map((metric, indx) =>
                     (<option value={metric} key={indx + 'matrics'}>{metric}</option>))}
             </NativeSelect>
